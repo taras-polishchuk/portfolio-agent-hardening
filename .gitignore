@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# pytest
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.cache
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+.Trashes
+.spotlight
+.TemporaryItems
+
+# Logs
+*.log
+logs/
+
+# Local config
+.env
+.env.local
+.env.*.local
+*.local
+
+# Backups
+*.bak
+*.bak-*
+*.backup
+*.orig
+*.rej
+
+# Crypto material
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+
+# n8n runtime
+.n8n/
+
+# Editor temp
+*.tmp
+*.temp
+*~

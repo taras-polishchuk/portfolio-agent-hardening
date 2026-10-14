@@ -1,0 +1,153 @@
+[experience] Q: What is your current role focus?
+A: AI Automation Engineer transitioning from frontend engineering. Over the last year I have worked daily with Claude, Copilot, agent instruction systems, and multi-agent workflows focused on business automation and productivity.
+
+[experience] Q: How many years of frontend experience?
+A: 5+ years in production environments. Built and maintained integrations with Shopify, Klaviyo, GTM, PostHog, REST APIs, and other business-critical systems.
+
+[experience] Q: How do you identify automation opportunities?
+A: I look for repetitive work, predictable decision patterns, and processes that create bottlenecks for other teams. The highest ROI usually comes from solving those three areas.
+
+[experience] Q: How quickly can you become productive?
+A: Usually within the first week. I focus on understanding the business, identifying bottlenecks, and delivering a small but meaningful improvement as early as possible.
+
+[experience] Q: What is your career trajectory?
+A: AI Automation Engineer now, transitioning toward AI Solutions Architect and eventually technical founder. The path is systems-of-agents + production AI depth + business ownership.
+
+[stack] Q: What AI tools do you use daily?
+A: Claude is my primary reasoning and planning tool. Copilot accelerates implementation, while the open-source Hermes AI runtime I run locally on my machine serves as the execution layer for orchestration, automation, and specialized workflows.
+
+[stack] Q: What is your backend experience?
+A: Production experience with SvelteKit, Next.js, NestJS, Fastify, Drizzle ORM, PostgreSQL, SQLite, REST APIs, and modern TypeScript-based application architecture.
+
+[stack] Q: How do you validate AI output before production?
+A: I use schema validation (Zod at every external boundary), confidence thresholds, automated checks, and human review for high-impact decisions. AI-generated output should never reach customers without validation.
+
+[stack] Q: Where do you host your projects?
+A: Self-hosted on my MacBook Pro (named macbook-pro in my Tailscale mesh) running n8n and supporting services. Public traffic reaches this chat widget through a Cloudflare Named Tunnel "homelab-chat" exposing chat.taraspolishchuk.com. The setup is optimized for privacy, experimentation, and rapid iteration, with Fly.io and Railway configs ready for a production migration when needed.
+
+[stack] Q: What about reliability in workflows?
+A: Reliability starts with validating every step independently. I use logging, schema validation, retries, error handling, and real-world payload testing before connecting systems together.
+
+[stack] Q: What is your CI/CD experience?
+A: Experience with GitHub Actions, deployment pipelines, automated testing workflows, Fly.io, Vercel, Railway, and modern development workflows.
+
+[stack] Q: How do you document your work?
+A: Documentation is Markdown-first. Every project includes setup instructions, architecture notes, environment examples, decision records (ADRs), and agent instructions when applicable.
+
+[projects] Q: Show me your strongest AI project.
+A: case-04-ai-discovery-platform — a multi-agent system with 7 specialist agents, support for 5 LLM providers, structured outputs, validation, and orchestration logic.
+
+[projects] Q: Tell me about your Shopify work.
+A: 5+ years building Shopify solutions including OS 2.0 themes, custom Liquid components, Shopify Functions, inventory automation, and e-commerce integrations.
+
+[projects] Q: What is your strongest project overall?
+A: Two systems stand out. case-04-ai-discovery-platform is a multi-agent system with 7 specialist agents and 5 LLM providers. OperatorOS is an open-source CLI framework (MIT, v0.6.0) that I shipped publicly on GitHub.
+
+[projects] Q: What systems have you built end to end?
+A: I have shipped complete systems including the AI Portfolio Assistant on this site (n8n + LLM + custom chat widget), case-04 multi-agent discovery platform, AJAA (ai-job-application-assistant, production-deployed with Postgres + Docker Compose + Cloudflare), OperatorOS (an open-source MIT-licensed CLI framework at github.com/taras-polishchuk/operatoros-framework), several Shopify storefronts end to end, and multiple landing pages and internal tools. The open-source Hermes AI runtime serves as the execution environment in my daily work; I use it rather than own it. Each of my own projects goes from design through deployment.
+
+[production-ai] Q: What is OperatorOS?
+A: OperatorOS is an open-source framework I built and shipped under MIT license at github.com/taras-polishchuk/operatoros-framework. It is a methodology for engineers to build their own personal operating system, captured in code, documents, and a bootstrap protocol that an AI agent can run. The current release is v0.6.0 with 7 CLI commands (init, validate, add, apply, run, export, version), 6 constitutional principles enforced where possible, and JSON-Schema based configuration validation. It is TypeScript-based with a small single-file CLI binary. It is my first shipped open-source project.
+
+[production-ai] Q: What is AJAA?
+A: AJAA (ai-job-application-assistant) is a production-deployed AI system I built end to end. It is a Ukraine-first automation platform with a monorepo using Next.js + NestJS + PostgreSQL + LLM composition, deployed self-hosted on Cloudflare edge. The repository is currently private on GitHub. It is the largest production AI system in my portfolio.
+
+[production-ai] Q: Tell me about the Hermes AI runtime you use.
+A: Hermes is an upstream open-source AI agent runtime I use as the execution environment for my personal AI workspace. I have customized my own integrations, workflows, prompts, and operational policies around Hermes, and I have contributed one small upstream pull request. I do not own or develop Hermes; I run it daily as a tool, the same way I run n8n, GitHub Actions, or any other dependency. The Workspace OS methodology and the OperatorOS CLI framework are my own projects.
+
+[production-ai] Q: What is the Fly.io deploy plan for this chatbot?
+A: The Dockerfile, fly.toml, railway.json, and start.sh for this n8n workflow are already prepared in the portfolio-agent-day0 folder. Migration is one command away once a Fly.io account is provisioned: fly launch, set N8N_USER + N8N_PASS + N8N_ENCRYPTION_KEY secrets, create a 1GB persistent volume, and fly deploy. The current Cloudflare Named Tunnel setup is a stable production route in the meantime.
+
+[production-ai] Q: How does case-04 compare to this portfolio agent?
+A: case-04-ai-discovery-platform is a multi-agent intake-to-proposal pipeline with 7 specialist agents and 5 LLM providers that runs on Vercel. This portfolio agent is a single hardened n8n workflow with 3 layers of prompt-injection defense that runs behind a Cloudflare tunnel. case-04 demonstrates multi-agent orchestration at scale; the portfolio agent demonstrates security-first AI deployment with adversarial test coverage.
+
+[production-ai] Q: What is your observability story?
+A: For this chatbot: structured logs in the n8n SQLite database, launchd-managed health checks every 5 minutes for the Cloudflare tunnel, and a standalone hermes-notify-bridge service that posts chat activity to a Discord channel via incoming webhook. The bridge runs as a launchd-managed Python service on macbook-pro, listens on 127.0.0.1:9101, and is invoked by both the AI Agent and the refusal paths in the n8n workflow. For case-04: per-agent token usage, cost, duration, and provider tracking in an analytics dashboard. For Hermes: kanban.db tracks every task with status transitions.
+
+[meta] Q: What AI systems have you built?
+A: I designed and shipped case-04-ai-discovery-platform — a multi-agent system with 7 specialist agents, 5 LLM providers, structured outputs, and orchestration logic. I also designed and shipped OperatorOS (MIT, github.com/taras-polishchuk/operatoros-framework), my open-source CLI framework for AI-native personal workspaces. For the execution environment of my own daily AI work I use the open-source Hermes AI runtime and have contributed one small upstream pull request. AJAA is a production AI system for job applications, currently in a private repository.
+
+[meta] Q: How do you use n8n?
+A: I build production n8n workflows with Chat Triggers, AI Agents, structured data tables, and external integrations. My portfolio AI Assistant is a working example — n8n workflow on the backend, custom chat widget on the frontend, Cloudflare Named Tunnel for stable public ingress. The workflow has 11 nodes, runs 3-layer prompt-injection defense, and is verified by 54 tests.
+
+[meta] Q: How do you design automation workflows?
+A: I start with the trigger and the desired outcome, then break the flow into the smallest independently testable steps. Every step gets validation, error handling, and a way to inspect what happened. Production workflows have observability built in from day one — silent failures are unacceptable.
+
+[meta] Q: What is Hermes?
+A: Hermes is an open-source AI agent runtime I use as part of my personal AI workspace. It is upstream software; I do not own it or develop it. I run Hermes locally and have customized my own integrations, workflows, prompts, and operational policies around it. I have contributed one small upstream pull request. Day-to-day, Hermes serves as the execution environment for my own engineering tasks — session memory, kanban, gateway for messaging platforms, custom skills, and personal operations. If you want to read about a project I actually own and ship, look at OperatorOS (github.com/taras-polishchuk/operatoros-framework), my MIT-licensed open-source CLI framework for AI-native personal workspaces.
+
+[meta] Q: How do you evaluate AI opportunities?
+A: I evaluate AI opportunities on three axes: does this workflow have repeatable patterns where AI adds real value, is the cost justified by the business outcome, and can I validate the AI output reliably before it reaches users. If any of those three is missing, I would not automate it with AI.
+
+[meta] Q: How do you build multi-agent systems?
+A: Each agent gets a narrow responsibility, a defined input and output schema, and access only to the tools it needs. A coordinator agent routes work, handles errors, and aggregates results. I prefer fewer agents with clear roles over many agents that overlap.
+
+[meta] Q: How do you validate AI output?
+A: Schema validation first, then domain-specific checks (does this answer the question, does this look right). For high-impact decisions I add a human review step. In production, I log every AI call with inputs, outputs, and confidence so I can audit later.
+
+[meta] Q: How do you work with LLMs?
+A: I pick the cheapest model that meets the quality bar, write structured prompts with clear role and constraints, and keep system prompts short. For complex tasks I split the work into a chain of smaller LLM calls rather than one big prompt.
+
+[meta] Q: What makes you different from other AI candidates?
+A: I focus on building systems, not prompts. My strength is combining AI, automation, software engineering, and business workflows into solutions that create measurable outcomes. Most AI candidates I see have prompt skills; I bring the production engineering to make those prompts run reliably at scale. I also ship open source — OperatorOS is on GitHub.
+
+[meta] Q: Are you more engineer or automation specialist?
+A: Both. Engineering gives me the ability to build reliable systems, while automation expertise helps identify high-impact opportunities and turn them into scalable solutions.
+
+[meta] Q: What is your n8n production experience?
+A: This very chat assistant is production n8n. The workflow is active on my own infrastructure, has 11 nodes, runs 3-layer prompt-injection defense, handles real recruiter traffic through a Cloudflare Named Tunnel, and is verified by 54 hardening tests covering 11 threat vectors. I treat it as both a production artifact and a portfolio demonstration.
+
+[meta] Q: Do you have PropTech experience?
+A: Not directly in PropTech, but rental marketplaces share patterns with e-commerce: listings, transactions, user lifecycle, payment flows, and operational workflows. My e-commerce background — 5+ years with Shopify, Klaviyo event pipelines, payment integrations — transfers cleanly to rental product domains. The domain is intuitive: tenants, landlords, listings, applications, leases. The transfer cost is days, not months.
+
+[meta] Q: How do you fit a small AI team?
+A: I can own the full lifecycle of an AI workflow: identify the opportunity, design the data model, build the prompt and validation, ship the workflow, and monitor it in production. That end-to-end ownership is what small teams need.
+
+[meta] Q: Salary expectation?
+A: <redacted-compensation — see private notes>[meta] Q: What is your hourly rate?
+A: <redacted-compensation — see private notes>[meta] Q: Are you flexible on compensation?
+A: <redacted-compensation — see private notes>[meta] Q: Preferred compensation model?
+A: <redacted-compensation — see private notes>[meta] Q: Are you open to remote work?
+A: Yes, fully remote is my preferred setup. I run all my own infrastructure remotely, so I am productive from anywhere with stable internet. I overlap European working hours.
+
+[meta] Q: What is your availability?
+A: I am available within 2 weeks for the right role. If there is strong mutual fit, I can move faster.
+
+[meta] Q: Do you have open source contributions?
+A: Yes. OperatorOS at github.com/taras-polishchuk/operatoros-framework is my MIT-licensed CLI framework at v0.6.0. It is a methodology plus CLI for engineers who want to build their own personal operating system. I also have several smaller public repositories (landing pages, microinteraction libraries, an interactive Shopify theme roadmap) under the same GitHub account.
+
+[chatbot] Q: What is this chat widget?
+A: This is a production AI assistant I built and run myself. It is an n8n workflow on the backend with three layers of defense against prompt injection, paired with a hardened JavaScript widget on the frontend. The whole pipeline lives in the portfolio-agent-day0 directory of my monorepo.
+
+[chatbot] Q: How does the chat widget work?
+A: When you send a message, the widget calls a webhook that runs my n8n workflow. The workflow validates your input against prompt injection patterns, sends it to an LLM with an armored system prompt that constrains it to my actual experience, then validates the response before sending it back. The widget shows you a streaming indicator while it thinks.
+
+[chatbot] Q: What LLM powers this?
+A: The default provider is MiniMax. The provider registry is swappable to Anthropic Claude, OpenAI GPT-4, or any OpenAI-compatible endpoint. Adding an API key as an environment variable flips the provider to configured without touching code.
+
+[chatbot] Q: Is my data stored?
+A: Successful conversations are pruned after 7 days. I keep failed executions and refusals for debugging. Each session gets a random 128-bit ID that is never tied to your real identity. I do not have analytics tracking, cookies, or third-party scripts on this widget.
+
+[chatbot] Q: What happens if the system rejects my question?
+A: You get a clear refusal message explaining the issue. Common reasons: input too long (over 500 characters), too many requests in a short window, or content that triggers my injection patterns. The system prefers to refuse safely over giving a wrong answer.
+
+[chatbot] Q: Can I break this with prompt injection?
+A: I hope not. The system has three independent defenses: a pre-LLM regex guard that strips known injection patterns, a system message that locks the model into the assistant role, and a post-LLM validator that refuses output containing URLs, instruction leaks, or identity claims inconsistent with my actual identity. I have a test suite of 54 adversarial inputs that runs on every change.
+
+[chatbot] Q: How is this deployed?
+A: It runs on my MacBook Pro (named macbook-pro in my Tailscale mesh) with the n8n process listening on port 5678. Public traffic reaches it through a Cloudflare Named Tunnel called homelab-chat, exposed at chat.taraspolishchuk.com. Backups run daily at 04:00 via launchd and a healthcheck checks the tunnel every 5 minutes.
+
+[chatbot] Q: Can you tell me about yourself?
+A: I am Taras's AI Portfolio Assistant. Taras is an AI Automation Engineer transitioning from 5+ years of frontend engineering. He works daily with Claude, builds production AI workflows with n8n, ships open-source tools like OperatorOS, and runs his own infrastructure on a MacBook Pro through Tailscale and Cloudflare. He is open to remote roles and targeting strong individual contributor or ownership-level positions.
+
+[chatbot] Q: What technologies do you use?
+A: For AI workflows: n8n 2.x with LangChain nodes, MiniMax as default LLM with Anthropic and OpenAI as alternatives, Zod for runtime validation, three-layer prompt-injection defense for security. For applications: SvelteKit 2 + Svelte 5 + TypeScript, Next.js, NestJS, Fastify, Drizzle ORM, PostgreSQL and SQLite. For infrastructure: Docker, Tailscale mesh networking, Cloudflare Tunnels, GitHub Actions, Fly.io configs. For Shopify: OS 2.0 themes, Liquid, Shopify Functions, Klaviyo event pipelines.
+
+[chatbot] Q: Tell me about your most challenging project.
+A: The hardest problem was hardening this chat assistant against prompt injection while keeping it useful for actual recruiter questions. Three independent defenses (regex pre-guard, system message armor, post-LLM validation) have to agree on what is safe. The model still needs to answer real questions about my work, which means the post-LLM validator cannot be too strict. Tuning that took several iterations and an adversarial test suite of 54 inputs.
+
+[chatbot] Q: What is your development philosophy?
+A: Build systems, not just prompts. Validate every external boundary with schema checks. Make failures observable from day one. Prefer fewer components with clear responsibilities over many components that overlap. Document decisions, not just outcomes. Ship open source when something generalizes.
+
+[chatbot] Q: How do you stay current with AI?
+A: I follow model releases and capability shifts, run hands-on experiments with new providers, and maintain my own open-source tools. I treat Claude as a daily reasoning partner, Copilot as an implementation accelerator, and the open-source Hermes runtime as the execution environment that ties my daily AI work together. Each new capability gets tested in a small workflow before I trust it in production.

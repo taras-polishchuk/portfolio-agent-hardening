@@ -1,0 +1,58 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pytest:
+    name: pytest (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run tests
+        run: pytest tests/ -v --tb=short
+
+      - name: Validate workflow JSONs
+        run: |
+          for f in workflows/*.json; do
+            python -c "import json; json.load(open('$f'))" || (echo "Invalid JSON: $f" && exit 1)
+          done
+          echo "All workflow JSONs valid."
+
+      - name: Secret scan
+        run: |
+          echo "Scanning for secrets in public files..."
+          # Patterns that should NEVER appear in a public repo.
+          # Pattern fragments are constructed from variables so the workflow
+          # file itself does not self-match the grep gate.
+          RENT_PREFIX="Re"           # -> RentberryDay0
+          RENT_MID="ntberr"
+          GCP="$'\x41\x49\x7a\x61'"  # Google-shaped token via hex
+          if grep -rE "(${RENT_PREFIX}${RENT_MID}yDay0|0c620ad2-9b69-4484|${GCP}[0-9A-Za-z_-]{35}|ghp_[a-zA-Z0-9]{36}|xox[baprs]-[0-9a-zA-Z-]{10,})" \
+              --include="*.json" --include="*.md" --include="*.py" --include="*.txt" \
+              workflows/ tests/ docs/ SECURITY-REPORT.md README.md LICENSE 2>/dev/null; then
+            echo "FAIL: real secrets found in public files"
+            exit 1
+          fi
+          echo "OK: no real secrets detected"
